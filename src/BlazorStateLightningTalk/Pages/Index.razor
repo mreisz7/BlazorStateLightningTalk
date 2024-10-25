@@ -8,7 +8,7 @@
 >
     @for (int i = 0; i < Slides.Count; i++)
     {
-        Type? slideType = Type.GetType($"ReactVsBlazorPresentation.Slides.{Slides[i]}");
+        Type? slideType = Type.GetType($"BlazorStateLightningTalk.Slides.{Slides[i]}");
         Dictionary<string, object> parameters = new()
         {
             { "IsCurrent", i == CurrentSlide },

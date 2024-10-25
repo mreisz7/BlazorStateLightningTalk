@@ -1,9 +1,10 @@
 ﻿@inherits SlideBase
+@using PinguApps.Blazor.QRCode
 
 <h1 class="page-title" style="font-size: clamp(4.4vw, 8.8vw, 4.4rem)">React vs. Blazor:</h1> 
 <h2 class="title-secondary" style="font-size: clamp(2vw, 4vw, 3rem)">A Comparison of Modern Web Frameworks</h2>
 
-<img src="img/SlideUrlQRCode.png" alt="https://mreisz7.github.io/TechForum2024Slideshow/" style="height: 200px; width: auto; margin: 2rem;" />
+<QRCode Data="https://mreisz7.github.io/TechForum2024Slideshow/" BackColor="transparent" ForeColor="#FFF" PaddingCells="5" />
 <span>https://mreisz7.github.io/TechForum2024Slideshow/</span>
 
 <div class="contact-card-container">
@@ -11,10 +12,5 @@
         <span class="contact-name">Michael Reisz</span>
         <span class="contact-title">Product Development Manager</span>
         <span class="contact-email"><a href="mailto:michael.reisz@milliman.com">michael.reisz@milliman.com</a></span>
-    </div>
-    <div class="contact-card">
-        <span class="contact-name">Jonathon Richardson</span>
-        <span class="contact-title">Software Architect</span>
-        <span class="contact-email"><a href="mailto:jonathon.richardson@milliman.com">jonathon.richardson@milliman.com</a></span>
     </div>
 </div>
