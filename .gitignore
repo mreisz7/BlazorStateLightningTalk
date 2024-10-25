@@ -30,6 +30,7 @@ msbuild.wrn
 # IDE Folders
 .vs/
 .vscode
+.idea/
 
 # Dependency directories
 **/wwwroot/package/
