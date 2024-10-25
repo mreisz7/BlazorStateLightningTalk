@@ -1,7 +1,5 @@
 ﻿namespace ReactVsBlazorPresentation.BaseComponents;
 
-using Microsoft.AspNetCore.Components;
-
 public class SlideBase : ComponentBase
 {
     public override Task SetParametersAsync(ParameterView parameters)
