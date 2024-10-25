@@ -1,17 +1,21 @@
-﻿@if (SlideShouldRender()) {
+﻿@if (SlideShouldRender())
+{
     <section class="slide-frame @SlidePositionClass()">
         @ChildContent
     </section>
 }
 
 @code {
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-    [Parameter, EditorRequired]
+    [Parameter]
+    [EditorRequired]
     public int CurrentSlideIndex { get; set; }
 
-    [Parameter, EditorRequired]
+    [Parameter]
+    [EditorRequired]
     public int SlideIndex { get; set; }
 
     private bool SlideShouldRender()
@@ -24,10 +28,13 @@
         if (CurrentSlideIndex > SlideIndex)
         {
             return "previous";
-        } else if (CurrentSlideIndex < SlideIndex)
+        }
+        else if (CurrentSlideIndex < SlideIndex)
         {
             return "next";
         }
+
         return "current";
     }
+
 }

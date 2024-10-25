@@ -3,19 +3,23 @@
 <div class="full-screen">
     <header class="slide-header">
         <h1 class="slide-title">Comparison: Component Structure</h1>
-        <img class="logo" src="img/react-logo.png" />
-        <img class="logo" src="img/blazor-logo.png" />
+        <img class="logo"
+             src="img/react-logo.png" />
+        <img class="logo"
+             src="img/blazor-logo.png" />
     </header>
     <div class="slide-content split">
         <div class="split-left">
             <h2>React:</h2>
-            <CodeBlock FileName="button.jsx" Class=@ShowSlideStopElement(1)>
+            <CodeBlock Class="@ShowSlideStopElement(1)"
+                       FileName="button.jsx">
                 @CodeStrings.buttonJsx
             </CodeBlock>
         </div>
         <div class="split-right">
             <h2>Blazor:</h2>
-            <CodeBlock FileName="Button.razor" Class=@ShowSlideStopElement(2)>
+            <CodeBlock Class="@ShowSlideStopElement(2)"
+                       FileName="Button.razor">
                 @CodeStrings.buttonRazor
             </CodeBlock>
         </div>
