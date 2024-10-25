@@ -1,7 +1,26 @@
-﻿namespace ReactVsBlazorPresentation.BaseComponents;
+﻿namespace BlazorStateLightningTalk.BaseComponents;
 
 public class SlideBase : ComponentBase
 {
+    public virtual int SlideStopMax { get; set; } = 0;
+
+    [Parameter]
+    public bool IsPastSlide { get; set; }
+
+    [Parameter]
+    public bool IsCurrent { get; set; }
+
+    [Parameter]
+    public int SlideStopIndex { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnIncrementSlide { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnDecrementSlide { get; set; }
+
     public override Task SetParametersAsync(ParameterView parameters)
     {
         if (parameters.TryGetValue(nameof(SlideStopIndex), out int? value))
@@ -14,25 +33,6 @@ public class SlideBase : ComponentBase
 
         return base.SetParametersAsync(parameters);
     }
-
-    public virtual int SlideStopMax { get; set; } = 0;
-
-    [Parameter]
-    public bool IsPastSlide { get; set; } = false;
-
-    [Parameter]
-    public bool IsCurrent { get; set; } = false;
-
-    [Parameter]
-    public int SlideStopIndex { get; set; } = 0;
-
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnIncrementSlide { get; set; }
-
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnDecrementSlide { get; set; }
 
     protected string ShowSlideStopElement(int index)
     {

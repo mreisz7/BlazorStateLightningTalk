@@ -1,24 +1,8 @@
-﻿namespace ReactVsBlazorPresentation.Data;
+﻿namespace BlazorStateLightningTalk.Data;
 
 public class CodeStrings
 {
-    // Comparison: Components
-
-    internal static string buttonJsx = """
-        import React from 'react';
-
-        function Button({ label, onClick }) {
-            return (
-                <button onClick={onClick}>
-                    {label}
-                </button>
-            );
-        }
-
-        export default Button;
-        """;
-
-    internal static string buttonRazor = """
+    internal const string buttonRazor = """
         <button @onclick=@OnClick>
             @Label
         </button>
@@ -30,6 +14,21 @@ public class CodeStrings
             [Parameter]
             public EventCallback OnClick { get; set; }
         }
+        """;
+    // Comparison: Components
+
+    internal static readonly string buttonJsx = """
+        import React from 'react';
+
+        function Button({ label, onClick }) {
+            return (
+                <button onClick={onClick}>
+                    {label}
+                </button>
+            );
+        }
+
+        export default Button;
         """;
 
     // Comparison: Routing

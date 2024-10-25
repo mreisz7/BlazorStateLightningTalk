@@ -22,13 +22,13 @@ jobs:
       run: rm -rf docs
 
     - name: Publish
-      run: dotnet publish src/ReactVsBlazorPresentation/ReactVsBlazorPresentation.csproj --configuration Release --output out
+      run: dotnet publish src/BlazorStateLightningTalk/BlazorStateLightningTalk.csproj --configuration Release --output out
 
     - name: Copy wwwroot to docs
       run: cp -r out/wwwroot docs
     
     - name: Set BasePath
-      run: sed -i 's/base href="\/"/base href="\/TechForum2024Slideshow\/"/g' docs/index.html
+      run: sed -i 's/base href="\/"/base href="\/BlazorStateLightningTalk\/"/g' docs/index.html
     
     - name: Remove the out folder
       run: rm -rf out
