@@ -12,4 +12,8 @@
         <PackageReference Include="PinguApps.Blazor.QRCode" Version="1.1.3"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Layout\NavMenu.razor"/>
+    </ItemGroup>
+
 </Project>

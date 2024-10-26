@@ -23,13 +23,13 @@ public class SlideBase : ComponentBase
 
     public override Task SetParametersAsync(ParameterView parameters)
     {
-        if (parameters.TryGetValue(nameof(SlideStopIndex), out int? value))
-            if (IsCurrent && value is not null)
-            {
-                if (value < 0)
-                    OnDecrementSlide.InvokeAsync();
-                else if (value > SlideStopMax) OnIncrementSlide.InvokeAsync();
-            }
+        if (!parameters.TryGetValue(nameof(SlideStopIndex), out int? value)) return base.SetParametersAsync(parameters);
+
+        if (!IsCurrent || value is null) return base.SetParametersAsync(parameters);
+
+        if (value < 0)
+            OnDecrementSlide.InvokeAsync();
+        else if (value > SlideStopMax) OnIncrementSlide.InvokeAsync();
 
         return base.SetParametersAsync(parameters);
     }

@@ -2,21 +2,23 @@
 
 <div @onkeydown="@HandleKeyDown"
      @ontouchmove="@HandleTouchMove"
-     @ontouchstart="@HandleTouchStart"@ref="@SlideContainerRef"tabindex="0">
+     @ontouchstart="@HandleTouchStart"
+     @ref="@_slideContainerRef"
+     tabindex="0">
     @for (var i = 0; i < Slides.Count; i++)
     {
         var slideType = Type.GetType($"BlazorStateLightningTalk.Slides.{Slides[i]}");
         Dictionary<string, object> parameters = new()
         {
-            { "IsCurrent", i == CurrentSlide },
-            { "IsPastSlide", i < CurrentSlide },
-            { "SlideStopIndex", CurrentSlideStopIndex },
+            { "IsCurrent", i.Equals(_currentSlide) },
+            { "IsPastSlide", i < _currentSlide },
+            { "SlideStopIndex", _currentSlideStopIndex },
             { "OnIncrementSlide", EventCallback.Factory.Create(this, IncrementSlides) },
             { "OnDecrementSlide", EventCallback.Factory.Create(this, DecrementSlides) }
         };
         if (slideType is not null)
         {
-            <SlideFrame CurrentSlideIndex=@CurrentSlide
+            <SlideFrame CurrentSlideIndex=@_currentSlide
                         SlideIndex=@i>
                 <DynamicComponent Parameters=@parameters
                                   Type=@slideType />
@@ -26,7 +28,7 @@
 </div>
 
 <footer>
-    <span>@($"{CurrentSlide + 1} / {Slides.Count}")</span>
+    <span>@($"{_currentSlide + 1} / {Slides.Count}")</span>
 </footer>
 
 @code {
@@ -35,138 +37,121 @@
     {
         if (firstRender)
         {
-            await SlideContainerRef.FocusAsync();
+            await _slideContainerRef.FocusAsync();
         }
     }
 
-    public List<string> Slides { get; set; } = new()
-    {
-        // Title
+    private List<string> Slides { get; } =
+    [
         nameof(TitlePage),
-
-        nameof(AboutReact),
-        nameof(AboutBlazor),
-        nameof(DeveloperSurveyResults),
-        nameof(ToolsAndEcosystem),
-        nameof(Development),
-        nameof(ComparisonComponentStructure),
-        nameof(ComparisonRouting),
-        nameof(ComparisonPersistentState),
-
-        nameof(ReactProsAndCons),
-        nameof(BlazorProsAndCons),
-
-        // Qustions/Contact
         nameof(ContactUs),
         nameof(AdditionalResources)
-    };
+    ];
 
-    public int CurrentSlide          = 0;
-    public int CurrentSlideStopIndex = 0;
+    private int _currentSlide;
+    private int _currentSlideStopIndex;
 
-    private ElementReference SlideContainerRef;
+    private ElementReference _slideContainerRef;
 
-    private double? xTouchStart = null;
-    private double? yTouchStart = null;
+    private double? _xTouchStart;
+    private double? _yTouchStart;
 
     private void Increment()
     {
-        if (CurrentSlide + 1 < Slides.Count)
+        if (_currentSlide + 1 < Slides.Count)
         {
-            CurrentSlideStopIndex++;
+            _currentSlideStopIndex++;
         }
     }
 
     private void Decrement()
     {
-        if (CurrentSlide > 0)
+        if (_currentSlide > 0)
         {
-            CurrentSlideStopIndex--;
+            _currentSlideStopIndex--;
         }
     }
 
     private void IncrementSlides()
     {
-        if (CurrentSlide + 1 < Slides.Count)
+        if (_currentSlide + 1 < Slides.Count)
         {
-            CurrentSlide++;
-            CurrentSlideStopIndex = 0;
+            _currentSlide++;
+            _currentSlideStopIndex = 0;
         }
     }
 
     private void DecrementSlides()
     {
-        if (CurrentSlide > 0)
+        if (_currentSlide > 0)
         {
-            CurrentSlide--;
-            CurrentSlideStopIndex = 0;
+            _currentSlide--;
+            _currentSlideStopIndex = 0;
         }
     }
 
     private void HandleKeyDown(KeyboardEventArgs e)
     {
-        if (e.Code == "KeyH")
+        switch (e.Code)
         {
-            CurrentSlide = 0;
-        }
-
-        if (e.Code == "ArrowRight" || e.Code == "ArrowDown" || e.Code == "Space" || e.Code == "Enter" || e.Code == "PageDown")
-        {
-            Increment();
-        }
-
-        if (e.Code == "ArrowLeft" || e.Code == "ArrowUp" || e.Code == "PageUp")
-        {
-            Decrement();
+            case "KeyH":
+                _currentSlide = 0;
+                break;
+            case "ArrowRight":
+            case "ArrowDown":
+            case "Space":
+            case "Enter":
+            case "PageDown":
+                Increment();
+                break;
+            case "ArrowLeft":
+            case "ArrowUp":
+            case "PageUp":
+                Decrement();
+                break;
         }
     }
 
     private void HandleTouchStart(TouchEventArgs e)
     {
-        xTouchStart = e.Touches[0].ClientX;
-        yTouchStart = e.Touches[0].ClientY;
+        _xTouchStart = e.Touches[0].ClientX;
+        _yTouchStart = e.Touches[0].ClientY;
     }
 
     private void HandleTouchMove(TouchEventArgs e)
     {
-        if (xTouchStart is not null && yTouchStart is not null)
+        if (_xTouchStart is not null && _yTouchStart is not null)
         {
             var xTouchMove = e.Touches[0].ClientX;
             var yTouchMove = e.Touches[0].ClientY;
 
-            var xTouchDiff = (double)xTouchStart - xTouchMove;
-            var yTouchDiff = (double)yTouchStart - yTouchMove;
+            var xTouchDiff = (double)_xTouchStart - xTouchMove;
+            var yTouchDiff = (double)_yTouchStart - yTouchMove;
 
             if (Math.Abs(xTouchDiff) > Math.Abs(yTouchDiff))
             {
-                if (xTouchDiff > 0)
+                switch (xTouchDiff)
                 {
-                    // Right Swipe triggered
-                    IncrementSlides();
-                }
-                else
-                {
-                    // Left Swipe triggered
-                    DecrementSlides();
+                    case > 0:
+                        // Right Swipe triggered
+                        IncrementSlides();
+                        break;
+                    default:
+                        // Left Swipe triggered
+                        DecrementSlides();
+                        break;
                 }
             }
             else
             {
-                if (yTouchDiff > 0)
-                {
-                    // Down Swipe triggered
-                    Console.WriteLine("Down Swipe");
-                }
-                else
-                {
-                    // Up Swipe triggered
-                    Console.WriteLine("Up Swipe");
-                }
+                // Up Swipe triggered
+                // Down Swipe triggered
+                Console.WriteLine(yTouchDiff > 0 ? "Down Swipe" : "Up Swipe");
             }
         }
 
-        xTouchStart = null;
-        yTouchStart = null;
+        _xTouchStart = null;
+        _yTouchStart = null;
     }
 
 }
