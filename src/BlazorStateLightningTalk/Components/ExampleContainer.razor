@@ -1,0 +1,33 @@
+<div class=@($"example-container component-rendered-{_renderIndicator}")
+     style=@($"background-color: {BackgroundColor}")>
+    <h2 class="example-container-title"
+        style=@($"color: {ForegroundColor}")>
+        @Title
+    </h2>
+    @ChildContent
+</div>
+
+@code {
+
+    [Parameter]
+    public string BackgroundColor { get; set; } = "transparent";
+
+    [Parameter]
+    public string ForegroundColor { get; set; } = "#000";
+
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private int    _renderIndicator = 0;
+    private string _renderedClass   = string.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        _renderIndicator++;
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+}

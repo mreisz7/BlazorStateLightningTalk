@@ -1,0 +1,22 @@
+@implements IDisposable
+@inject AppStateDependencyInjection AppStateDependencyInjection
+
+<div class="datetime-button-container">
+    <h3>@AppStateDependencyInjection.Date.ToString("yyyy-MM-dd hh:mm:ss")</h3>
+    <button @onclick="@AppStateDependencyInjection.UpdateDate">Update DateTime</button>
+</div>
+
+@code {
+
+    protected override Task OnInitializedAsync()
+    {
+        AppStateDependencyInjection.OnChange += StateHasChanged;
+        return base.OnInitializedAsync();
+    }
+
+    public void Dispose()
+    {
+        AppStateDependencyInjection.OnChange -= StateHasChanged;
+    }
+
+}

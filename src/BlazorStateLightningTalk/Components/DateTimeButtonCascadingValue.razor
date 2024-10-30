@@ -1,0 +1,11 @@
+<div class="datetime-button-container">
+    <h3>@AppState.Date.ToString("yyyy-MM-dd hh:mm:ss")</h3>
+    <button @onclick="@AppState.UpdateDate">Update DateTime</button>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    public AppStateCascadingValue AppState { get; set; } = new();
+
+}
