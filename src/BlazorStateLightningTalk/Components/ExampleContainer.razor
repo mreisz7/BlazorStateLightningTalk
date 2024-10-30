@@ -1,4 +1,4 @@
-<div class=@($"example-container component-rendered-{_renderIndicator}")
+<div class=@($"example-container component-rendered-{(_renderIndicator ? "true" : "false")}")
      style=@($"background-color: {BackgroundColor}")>
     <h2 class="example-container-title"
         style=@($"color: {ForegroundColor}")>
@@ -21,12 +21,11 @@
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-    private int    _renderIndicator = 0;
-    private string _renderedClass   = string.Empty;
+    private bool _renderIndicator = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        _renderIndicator++;
+        _renderIndicator = !_renderIndicator;
         await base.OnAfterRenderAsync(firstRender);
     }
 

@@ -326,16 +326,54 @@ th, td {
     content: "An error has occurred."
 }
 
-div[class*="component-rendered-"] {
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Initial dimmed border color */
-    animation: borderBrightenDim 1s both;
+.datetime-button-container {
+    color: #000;
+    padding: 20px;
 }
 
-@keyframes borderBrightenDim {
+.example-container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    min-width: 200px;
+    padding: 20px;
+    flex: 1 1 auto;
+    max-height: 50vh;
+    align-items: stretch;
+    justify-items: stretch;
+}
+
+    .example-container .example-container-title {
+        margin: 0px;
+        width: 100%;
+    }
+
+.component-rendered-true {
+    border: 5px solid rgba(255, 255, 255, 0);
+    animation: borderBrightenDim1 2s ease-in-out;
+}
+
+.component-rendered-false {
+    border: 5px solid rgba(255, 255, 255, 0); /* Initial dimmed border color */
+    animation: borderBrightenDim2 2s ease-in-out;
+}
+
+@keyframes borderBrightenDim1 {
     0%, 100% {
         border-color: rgba(255, 255, 255, 0); /* Dimmed border */
     }
+
     50% {
+        border-color: rgba(255, 255, 255, 1); /* Brightened border */
+    }
+}
+
+@keyframes borderBrightenDim2 {
+    0%, 100% {
+        border-color: rgba(255, 255, 255, 0); /* Dimmed border */
+    }
+
+    49% {
         border-color: rgba(255, 255, 255, 1); /* Brightened border */
     }
 }

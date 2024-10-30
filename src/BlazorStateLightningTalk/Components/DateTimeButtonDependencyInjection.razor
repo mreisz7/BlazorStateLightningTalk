@@ -1,7 +1,7 @@
 @implements IDisposable
 @inject AppStateDependencyInjection AppStateDependencyInjection
 
-<div class="datetime-button-container">
+<div class=@($"datetime-button-container component-rendered-{(_renderIndicator ? "true" : "false")}")>
     <h3>@AppStateDependencyInjection.Date.ToString("yyyy-MM-dd hh:mm:ss")</h3>
     <button @onclick="@AppStateDependencyInjection.UpdateDate">Update DateTime</button>
 </div>
@@ -17,6 +17,14 @@
     public void Dispose()
     {
         AppStateDependencyInjection.OnChange -= StateHasChanged;
+    }
+
+    private bool _renderIndicator = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        _renderIndicator = !_renderIndicator;
+        await base.OnAfterRenderAsync(firstRender);
     }
 
 }
