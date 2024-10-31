@@ -328,52 +328,59 @@ th, td {
 
 .datetime-button-container {
     color: #000;
-    padding: 20px;
+}
+
+.datetime-button-container h3 {
+    padding-bottom: 10px;
 }
 
 .example-container {
     display: flex;
     flex-flow: row wrap;
-    gap: 20px;
-    min-width: 200px;
-    padding: 20px;
     flex: 1 1 auto;
-    max-height: 50vh;
+    max-height: fit-content;
     align-items: stretch;
     justify-items: stretch;
+    margin: 20px;
+    padding: 10px;
 }
 
     .example-container .example-container-title {
         margin: 0px;
         width: 100%;
+        align-self: stretch;
     }
 
 .component-rendered-true {
-    border: 5px solid rgba(255, 255, 255, 0);
+    border: 5px solid #3498db00;
     animation: borderBrightenDim1 2s ease-in-out;
 }
 
 .component-rendered-false {
-    border: 5px solid rgba(255, 255, 255, 0); /* Initial dimmed border color */
+    border: 5px solid #3498db00;
     animation: borderBrightenDim2 2s ease-in-out;
 }
 
 @keyframes borderBrightenDim1 {
     0%, 100% {
-        border-color: rgba(255, 255, 255, 0); /* Dimmed border */
+        /*border-color: rgba(255, 255, 255, 0);*/ /* Dimmed border */
+        border-color: #3498db00;
     }
 
     50% {
-        border-color: rgba(255, 255, 255, 1); /* Brightened border */
+        /*border-color: rgba(255, 255, 255, 1);*/ /* Brightened border */
+        border-color: #3498dbff;
     }
 }
 
 @keyframes borderBrightenDim2 {
     0%, 100% {
-        border-color: rgba(255, 255, 255, 0); /* Dimmed border */
+        /*border-color: rgba(255, 255, 255, 0);*/ /* Dimmed border */
+        border-color: #3498db00;
     }
 
     49% {
-        border-color: rgba(255, 255, 255, 1); /* Brightened border */
+        /*border-color: rgba(255, 255, 255, 1);*/ /* Brightened border */
+        border-color: #3498dbff;
     }
 }
