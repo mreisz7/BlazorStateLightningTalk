@@ -3,6 +3,8 @@
 <div @onkeydown="@HandleKeyDown"
      @ontouchmove="@HandleTouchMove"
      @ontouchstart="@HandleTouchStart"
+     @ontouchstart:preventDefault="true"
+     @ontouchstart:stopPropagation="true"
      @ref="@_slideContainerRef"
      tabindex="0">
     @for (var i = 0; i < Slides.Count; i++)
