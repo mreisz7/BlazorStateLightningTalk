@@ -3,6 +3,8 @@
     <button @onclick="@AppState.UpdateDate"
             @onclick:stopPropagation="true"
             @onclick:preventDefault="true"
+            @ontouchstart:stopPropagation="true"
+            @ontouchstart:preventDefault="true"
     >
         Update DateTime
     </button>

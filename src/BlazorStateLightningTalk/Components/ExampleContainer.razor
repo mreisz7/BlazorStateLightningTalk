@@ -2,6 +2,8 @@
      style=@($"background-color: {BackgroundColor}")
      @onclick:stopPropagation="true"
      @onclick:preventDefault="true"
+     @ontouchstart:stopPropagation="true"
+     @ontouchstart:preventDefault="true"
 >
     <h2 class="example-container-title"
         style=@($"color: {ForegroundColor}")>
