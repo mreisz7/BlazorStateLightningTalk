@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlazorStateLightningTalk",
   "resources": {
-    "hash": "sha256-w7JY1GnOkGymHwnyAEBT1wu38cZjsLMRUPPawXV+sps=",
+    "hash": "sha256-iUmiTywM2IfIiTXcC8aiIzICOYRIa5xHOKS4U6mIjyU=",
     "jsModuleNative": {
       "dotnet.native.8.0.10.4xsnm8lwn6.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "BlazorStateLightningTalk.wasm": "sha256-6P1CXTuclEJXI9LGOGBac9tjnKsm2EI+6ddjizufdrs=",
+      "BlazorStateLightningTalk.wasm": "sha256-rja931TWUw/JvWNnBzbfpbnreXInUz2OCOnDI9k9KQY=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-AwDV9D8JPzGj0nYXie7or4lEYYbuRss3G7OfDRs9fFE=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-LjKDnzP8fbMycp0izIMe7IL47x7iFRJGzYGd2bNkdmE=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-jrdFRjrF1131MZ3HGQVsI3dX8cLdZvPz85lsBltxjSM=",
