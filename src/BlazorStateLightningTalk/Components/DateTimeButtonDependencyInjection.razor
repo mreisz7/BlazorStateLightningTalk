@@ -3,7 +3,12 @@
 
 <div class=@($"datetime-button-container component-rendered-{(_renderIndicator ? "true" : "false")}")>
     <h3>@AppStateDependencyInjection.Date.ToString("yyyy-MM-dd hh:mm:ss")</h3>
-    <button @onclick="@AppStateDependencyInjection.UpdateDate">Update DateTime</button>
+    <button @onclick="@AppStateDependencyInjection.UpdateDate"
+            @onclick:stopPropagation="true"
+            @onclick:preventDefault="true"
+    >
+        Update DateTime
+    </button>
 </div>
 
 @code {

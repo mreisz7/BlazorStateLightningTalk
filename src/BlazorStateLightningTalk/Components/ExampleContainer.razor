@@ -1,5 +1,8 @@
 <div class=@($"example-container component-rendered-{(_renderIndicator ? "true" : "false")}")
-     style=@($"background-color: {BackgroundColor}")>
+     style=@($"background-color: {BackgroundColor}")
+     @onclick:stopPropagation="true"
+     @onclick:preventDefault="true"
+>
     <h2 class="example-container-title"
         style=@($"color: {ForegroundColor}")>
         @Title
