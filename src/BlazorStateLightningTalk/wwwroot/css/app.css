@@ -110,7 +110,7 @@ h1 {
 
 .full-screen {
     min-height: 98vh;
-    width: 100vw;
+    width: 95vw;
     display: flex;
     flex-flow: column nowrap;
 }
@@ -135,8 +135,7 @@ h1 {
 
 .slide-content {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+    flex-flow: column nowrap;
     padding: 1rem;
     overflow-y: auto;
 }
@@ -240,6 +239,7 @@ th, td {
     padding: .5em;
     font-size: 1.25rem;
     overflow-y: auto;
+    width: fit-content;
 }
 
 @media only screen and (max-width: 667px) {

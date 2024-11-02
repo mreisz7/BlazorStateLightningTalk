@@ -1,12 +1,12 @@
 <div class=@($"datetime-button-container component-rendered-{(_renderIndicator ? "true" : "false")}")>
-    <h3>@AppState.Date.ToString("hh:mm:ss.fff")</h3>
-    <button @onclick="@AppState.UpdateDate"
+    <h3>@AppState.Time.ToString("hh:mm:ss.fff")</h3>
+    <button @onclick="@AppState.UpdateTime"
             @onclick:stopPropagation="true"
             @onclick:preventDefault="true"
             @ontouchstart:stopPropagation="true"
             @ontouchstart:preventDefault="true"
     >
-        Update DateTime
+        Update
     </button>
 </div>
 

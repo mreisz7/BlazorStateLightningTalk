@@ -2,17 +2,88 @@
 
 internal static class CodeStrings
 {
-    internal const string ButtonRazor = """
-        <button @onclick=@OnClick>
-            @Label
-        </button>
+    internal const string CascadingValueRazorComponent = """
+        <CascadingValue Value=@this>
+            @ChildContent
+        </CascadingValue>
 
         @code {
             [Parameter]
-            public string Label { get; set; }
-        
-            [Parameter]
-            public EventCallback OnClick { get; set; }
+            public RenderFragment? ChildContent { get; set; }
+
+            public TimeOnly Time { get; private set; } = TimeOnly.FromDateTime(DateTime.Now);
+
+            public void UpdateTime()
+            {
+                Time = TimeOnly.FromDateTime(DateTime.Now);
+                StateHasChanged();
+            }
         }
+        """;
+
+    internal const string CascadingValueButtonRazorComponent = """
+        <h3>@AppState.Time.ToString("hh:mm:ss.fff")</h3>
+        <button @onclick=@AppState.UpdateTime>
+            Update
+        </button>
+
+        @code {
+            [CascadingParameter]
+            public AppStateCascadingValue AppState { get; set; } = new();
+        }
+        """;
+
+    internal const string CascadingValueUsage = """
+        <AppStateCascadingValue>
+            <DateTimeButtonCascadingValue />
+        </AppStateCascadingValue>
+        """;
+
+    internal const string AppStateDependencyInjection = """
+        public class AppStateDependencyInjection
+        {
+            public TimeOnly Time { get; private set; } = TimeOnly.FromDateTime(DateTime.Now);
+
+            public void UpdateTime()
+            {
+                Time = TimeOnly.FromDateTime(DateTime.Now);
+                NotifyStateChanged();
+            }
+
+            public event Action? OnChange;
+
+            private void NotifyStateChanged() => OnChange?.Invoke();
+        }
+        """;
+
+    internal const string DependencyInjectionButtonRazorComponent = """
+        @implements IDisposable
+        @inject AppStateDependencyInjection AppState
+
+        <h3>@AppState.Time.ToString("hh:mm:ss.fff")</h3>
+        <button @onclick=@AppState.UpdateTime>
+            Update
+        </button>
+
+        @code {
+            protected override async Task OnInitializedAsync()
+            {
+                AppState.OnChange += StateHasChanged;
+                await base.OnInitializedAsync();
+            }
+
+            public void Dispose()
+            {
+                AppState.OnChange -= StateHasChanged;
+            }
+        }        
+        """;
+
+    internal const string DependencyInjectionUsage = """
+        ...
+
+        builder.Services.AddScoped<AppStateDependencyInjection>();
+        
+        ...
         """;
 }

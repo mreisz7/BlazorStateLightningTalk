@@ -1,29 +1,29 @@
 @implements IDisposable
-@inject AppStateDependencyInjection AppStateDependencyInjection
+@inject AppStateDependencyInjection AppState
 
 <div class=@($"datetime-button-container component-rendered-{(_renderIndicator ? "true" : "false")}")>
-    <h3>@AppStateDependencyInjection.Date.ToString("hh:mm:ss.fff")</h3>
-    <button @onclick="@AppStateDependencyInjection.UpdateDate"
+    <h3>@AppState.Time.ToString("hh:mm:ss.fff")</h3>
+    <button @onclick="@AppState.UpdateTime"
             @onclick:stopPropagation="true"
             @onclick:preventDefault="true"
             @ontouchstart:stopPropagation="true"
             @ontouchstart:preventDefault="true"
     >
-        Update DateTime
+        Update
     </button>
 </div>
 
 @code {
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        AppStateDependencyInjection.OnChange += StateHasChanged;
-        return base.OnInitializedAsync();
+        AppState.OnChange += StateHasChanged;
+        await base.OnInitializedAsync();
     }
 
     public void Dispose()
     {
-        AppStateDependencyInjection.OnChange -= StateHasChanged;
+        AppState.OnChange -= StateHasChanged;
     }
 
     private bool _renderIndicator = false;

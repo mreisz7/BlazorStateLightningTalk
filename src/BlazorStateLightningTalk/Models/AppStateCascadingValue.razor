@@ -1,4 +1,4 @@
-<CascadingValue Value="@(this)">
+<CascadingValue Value=@this>
     @ChildContent
 </CascadingValue>
 
@@ -7,11 +7,11 @@
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-    public DateTime Date { get; private set; } = DateTime.Now;
+    public TimeOnly Time { get; private set; } = TimeOnly.FromDateTime(DateTime.Now);
 
-    public void UpdateDate()
+    public void UpdateTime()
     {
-        Date = DateTime.Now;
+        Time = TimeOnly.FromDateTime(DateTime.Now);
         StateHasChanged();
     }
 
