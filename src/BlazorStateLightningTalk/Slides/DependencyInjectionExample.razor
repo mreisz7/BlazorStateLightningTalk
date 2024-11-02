@@ -1,29 +1,32 @@
 @inherits SlideBase
-
-<h1>Dependency Injection Example</h1>
-<ExampleContainer BackgroundColor="#FFF"
-                  ForegroundColor="#000"
-                  Title="State Container"
-/>
-<ExampleContainer BackgroundColor="#111"
-                  ForegroundColor="#FFF"
-                  Title="Top-Level">
-    <ExampleContainer BackgroundColor="#F00"
+<div @ontouchstart:stopPropagation="true"
+     @ontouchstart:preventDefault="true"
+>
+    <h1>Example: Dependency Injection</h1>
+    <ExampleContainer BackgroundColor="#FFF"
+                      ForegroundColor="#000"
+                      Title="State Container"
+    />
+    <ExampleContainer BackgroundColor="#111"
                       ForegroundColor="#FFF"
-                      Title="Second-Level">
-        <ExampleContainer BackgroundColor="#0F0"
-                          ForegroundColor="#000"
-                          Title="Third-Level">
-            <DateTimeButtonDependencyInjection />
+                      Title="Top-Level">
+        <ExampleContainer BackgroundColor="#F00"
+                          ForegroundColor="#FFF"
+                          Title="Second-Level">
+            <ExampleContainer BackgroundColor="#0F0"
+                              ForegroundColor="#000"
+                              Title="Third-Level">
+                <DateTimeButtonDependencyInjection />
+            </ExampleContainer>
+        </ExampleContainer>
+        <ExampleContainer BackgroundColor="#F00"
+                          ForegroundColor="#FFF"
+                          Title="Second-Level">
+            <ExampleContainer BackgroundColor="#0F0"
+                              ForegroundColor="#000"
+                              Title="Third-Level">
+                <DateTimeButtonDependencyInjection />
+            </ExampleContainer>
         </ExampleContainer>
     </ExampleContainer>
-    <ExampleContainer BackgroundColor="#F00"
-                      ForegroundColor="#FFF"
-                      Title="Second-Level">
-        <ExampleContainer BackgroundColor="#0F0"
-                          ForegroundColor="#000"
-                          Title="Third-Level">
-            <DateTimeButtonDependencyInjection />
-        </ExampleContainer>
-    </ExampleContainer>
-</ExampleContainer>
+</div>
