@@ -34,7 +34,9 @@ internal static class CodeStrings
 
     internal const string CascadingValueUsage = """
         <AppStateCascadingValue>
-            <DateTimeButtonCascadingValue />
+            <Router AppAssembly="@typeof(App).Assembly">
+                ...
+            </Router>
         </AppStateCascadingValue>
         """;
 
