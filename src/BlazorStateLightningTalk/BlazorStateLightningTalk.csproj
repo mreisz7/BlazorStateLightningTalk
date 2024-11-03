@@ -12,10 +12,4 @@
         <PackageReference Include="PinguApps.Blazor.QRCode" Version="1.1.3" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Content Update="Slides\CascadingValueCodeSamples.razor">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      </Content>
-    </ItemGroup>
-
 </Project>
