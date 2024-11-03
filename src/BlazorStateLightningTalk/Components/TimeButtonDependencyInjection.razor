@@ -15,10 +15,9 @@
 
 @code {
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         AppState.OnChange += StateHasChanged;
-        await base.OnInitializedAsync();
     }
 
     public void Dispose()

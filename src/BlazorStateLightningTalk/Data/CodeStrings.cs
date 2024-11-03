@@ -16,7 +16,6 @@ internal static class CodeStrings
             public void UpdateTime()
             {
                 Time = TimeOnly.FromDateTime(DateTime.Now);
-                StateHasChanged();
             }
         }
         """;
@@ -66,10 +65,9 @@ internal static class CodeStrings
         </button>
 
         @code {
-            protected override async Task OnInitializedAsync()
+            protected override void OnInitialized()
             {
                 AppState.OnChange += StateHasChanged;
-                await base.OnInitializedAsync();
             }
 
             public void Dispose()
