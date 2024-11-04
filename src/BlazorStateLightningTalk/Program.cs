@@ -7,7 +7,4 @@ builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.H
 // AppState - DI
 builder.Services.AddScoped<AppStateDependencyInjection>();
 
-// AppState - Cascading Value
-builder.Services.AddCascadingValue<AppStateCascadingValue>(_ => new AppStateCascadingValue());
-
 await builder.Build().RunAsync();
