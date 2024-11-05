@@ -148,6 +148,7 @@ h1 {
 
 .slide-content ul {
     font-size: clamp(1rem, 3rem, 2rem);
+    margin-block-start: 0;
 }
 
 .slide-content ul li {

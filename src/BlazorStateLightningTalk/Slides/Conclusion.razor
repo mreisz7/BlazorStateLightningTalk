@@ -1,0 +1,40 @@
+﻿@inherits SlideBase
+
+<div class="full-screen">
+    <header class="slide-header">
+        <h1 class="slide-title">Blazor State Management: Conclusion</h1>
+    </header>
+    <div class="slide-content">
+        <h2>CascadingValue:</h2>
+        <ul>
+            <li>
+                Best for state limited to a component hierarchy
+
+            </li>
+            <li>
+                Works best for state that does not change frequently
+            </li>
+            <li>
+                Simple to implement
+            </li>
+            <li>
+                Limited to use in components hierarchy only
+            </li>
+        </ul>
+        <h2>Dependency Injection:</h2>
+        <ul>
+            <li>
+                Ideal for globally accessible state or state used across multiple, non-related components
+            </li>
+            <li>
+                Better for encapsulating complex state logic and data persistence.
+            </li>
+            <li>
+                More complex implementation
+            </li>
+            <li>
+                Is not limited to use in components only
+            </li>
+        </ul>
+    </div>
+</div>
