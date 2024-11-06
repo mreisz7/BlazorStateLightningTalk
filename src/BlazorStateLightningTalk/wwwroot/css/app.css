@@ -147,12 +147,14 @@ h1 {
 }
 
 .slide-content ul {
-    font-size: clamp(1rem, 3rem, 2rem);
+    font-size: clamp(1.5rem, 3vh, 3rem);
     margin-block-start: 0;
+    padding-left: .5rem;
 }
 
 .slide-content ul li {
     margin: 1rem 1rem;
+    padding-left: .5rem;
 }
 
 .slide-content.split {
@@ -242,6 +244,7 @@ th, td {
     font-size: 1.25rem;
     overflow-y: auto;
     width: fit-content;
+    max-width: calc(100vw - 3rem);
 }
 
 @media only screen and (max-width: 667px) {
@@ -271,6 +274,7 @@ th, td {
     row-gap: 4rem;
     column-gap: 10rem;
     margin-top: 2.5rem;
+    text-align: center;
 }
 
 @media only screen and (max-width: 667px) {
@@ -288,8 +292,9 @@ th, td {
 }
 
 .contact-card .contact-name {
-    font-size: 1.5em;
+    font-size: 1.75em;
     font-weight: bold;
+    margin-bottom: .5rem
 }
 
 .contact-card .contact-title,

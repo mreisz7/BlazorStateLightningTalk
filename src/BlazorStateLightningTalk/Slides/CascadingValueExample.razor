@@ -1,35 +1,37 @@
 @inherits SlideBase
 
-<div @ontouchstart:stopPropagation="true"
-     @ontouchstart:preventDefault="true"
->
-    <h1>Example: CascadingValue</h1>
-    <AppStateCascadingValue>
-        <ExampleContainer BackgroundColor="#FFF"
-                          ForegroundColor="#000"
-                          Title="CascadingValue Component">
-            <ExampleContainer BackgroundColor="#111"
-                              ForegroundColor="#FFF"
-                              Title="Top-Level">
-                <ExampleContainer BackgroundColor="#F00"
+<div class="full-screen">
+    <header class="slide-header">
+        <h1 class="slide-title">Example: CascadingValue</h1>
+    </header>
+    <div class="slide-content">
+        <AppStateCascadingValue>
+            <ExampleContainer BackgroundColor="#FFF"
+                              ForegroundColor="#000"
+                              Title="CascadingValue Component">
+                <ExampleContainer BackgroundColor="#111"
                                   ForegroundColor="#FFF"
-                                  Title="Second-Level">
-                    <ExampleContainer BackgroundColor="#0F0"
-                                      ForegroundColor="#000"
-                                      Title="Third-Level">
-                        <TimeButtonCascadingValue />
+                                  Title="Top-Level">
+                    <ExampleContainer BackgroundColor="#F00"
+                                      ForegroundColor="#FFF"
+                                      Title="Second-Level">
+                        <ExampleContainer BackgroundColor="#0F0"
+                                          ForegroundColor="#000"
+                                          Title="Third-Level">
+                            <TimeButtonCascadingValue />
+                        </ExampleContainer>
                     </ExampleContainer>
-                </ExampleContainer>
-                <ExampleContainer BackgroundColor="#F00"
-                                  ForegroundColor="#FFF"
-                                  Title="Second-Level">
-                    <ExampleContainer BackgroundColor="#0F0"
-                                      ForegroundColor="#000"
-                                      Title="Third-Level">
-                        <TimeButtonCascadingValue />
+                    <ExampleContainer BackgroundColor="#F00"
+                                      ForegroundColor="#FFF"
+                                      Title="Second-Level">
+                        <ExampleContainer BackgroundColor="#0F0"
+                                          ForegroundColor="#000"
+                                          Title="Third-Level">
+                            <TimeButtonCascadingValue />
+                        </ExampleContainer>
                     </ExampleContainer>
                 </ExampleContainer>
             </ExampleContainer>
-        </ExampleContainer>
-    </AppStateCascadingValue>
+        </AppStateCascadingValue>
+    </div>
 </div>

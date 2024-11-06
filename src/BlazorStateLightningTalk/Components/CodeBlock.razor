@@ -1,4 +1,7 @@
-﻿<div class=@($"code-block {Class}")>
+﻿<div class=@($"code-block {Class}")
+     @ontouchstart:preventDefault="false"
+     @ontouchstart:stopPropagation="false"
+>
     @if (!string.IsNullOrEmpty(FileName))
     {
         <h3 class="code-block-filename">
