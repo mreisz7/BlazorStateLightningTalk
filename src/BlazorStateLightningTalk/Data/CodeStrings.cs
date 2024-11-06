@@ -11,7 +11,8 @@ internal static class CodeStrings
             [Parameter]
             public RenderFragment? ChildContent { get; set; }
 
-            public TimeOnly Time { get; private set; } = TimeOnly.FromDateTime(DateTime.Now);
+            public TimeOnly Time { get; private set; } = 
+                TimeOnly.FromDateTime(DateTime.Now);
 
             public void UpdateTime()
             {
@@ -43,7 +44,8 @@ internal static class CodeStrings
     internal const string AppStateDependencyInjection = """
         public class AppStateDependencyInjection
         {
-            public TimeOnly Time { get; private set; } = TimeOnly.FromDateTime(DateTime.Now);
+            public TimeOnly Time { get; private set; } =
+                TimeOnly.FromDateTime(DateTime.Now);
 
             public void UpdateTime()
             {
